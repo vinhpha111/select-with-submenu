@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>custom select</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+<ul name="select1" class="select-group">
+	<li value="1">a</li>
+	<ul label="submenu1">
+		<li value="3">c</li>
+		<li value="4">d</li>
+		<ul label="submenu2">
+			<li value="3">e</li>
+			<li value="4">f</li>
+			<ul label="submenu3">
+				<li value="3">g</li>
+				<li value="4">h</li>
+			</ul>
+		</ul>
+	</ul>
+	<li value="2">b</li>
+</ul>
+<ul name="select2" class="select-group">
+	<li value="1">a</li>
+	<li value="2">b</li>
+	<ul label="submenu1">
+		<li value="3">c</li>
+		<li value="4">d</li>
+		<ul label="submenu2">
+			<li value="3">e</li>
+			<li value="4">f</li>
+			<ul label="submenu3">
+				<li text-label="submenu1 - submenu2 - submenu3 - g" value="3">g</li>
+				<li value="4">h</li>
+			</ul>
+		</ul>
+	</ul>
+</ul>
+<script>
+	let config = {
+		// htmlButton: "<button style='padding-right: 25px;' class='btn btn-danger' > $text <i class='fa fa-caret-down'></i></button>",
+		defaultText: "Chọn item"
+	}
+	$(document).ready(function(){
+		$('.select-group').instance_select_group(config);
+	});
+</script>
+</body>
+</html>
