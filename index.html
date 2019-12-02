@@ -3,9 +3,9 @@
 <head>
 	<title>custom select</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
@@ -45,10 +45,26 @@
 <script>
 	let config = {
 		// htmlButton: "<button style='padding-right: 25px;' class='btn btn-danger' > $text <i class='fa fa-caret-down'></i></button>",
-		defaultText: "Chọn item"
+		defaultText: "Chọn item",
+		search: false
 	}
 	$(document).ready(function(){
 		$('.select-group').instance_select_group(config);
+		let html = "<ul name='location' class='select-group'>";
+		$.get('https://raw.githubusercontent.com/madnh/hanhchinhvn/master/dist/tree.json', function(data, status) {
+			data = JSON.parse(data);
+			for(let i in data) {
+				let htmlSubmenu = "<ul label='"+data[i].name+"'>";
+				for(let j in data[i]['quan-huyen']) {
+					htmlSubmenu += "<li value='"+j+"' text-label='"+data[i]['quan-huyen'][j]['path_with_type']+"'>"+ data[i]['quan-huyen'][j].name +"</li>";
+				}
+				htmlSubmenu += "</ul>"
+				html += htmlSubmenu;
+			}
+			html += "</ul>";
+			$('body').append(html);
+			$('.select-group').instance_select_group(config);
+		});
 	});
 </script>
 </body>

@@ -4,11 +4,12 @@ div[class^="select-submenu-"]{
 }
 
 div[class^="select-submenu-"] .show{
-	max-height: 100vh !important;
+	max-height: 500px !important;
 	-webkit-animation-name: animation-show; /* Safari 4.0 - 8.0 */
 	-webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
 	animation-name: animation-show;
 	animation-duration: 0.5s;
+	border: 1px solid #bdbcbc;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -19,8 +20,14 @@ div[class^="select-submenu-"] .show{
 
 /* Standard syntax */
 @keyframes animation-show {
-  0%   {max-height: 0px;}
-  100% {max-height: 100vh;}
+  0%   {
+  	max-height: 0px;
+  	overflow-y: hidden;
+  }
+  100% {
+  	max-height: 500px;
+  	overflow-y: hidden;
+  }
 }
 
 div[class^="select-submenu-"] .button {
@@ -35,22 +42,56 @@ div[class^="select-submenu-"] .button > * {
 div[class^="select-submenu-"] .content-option {
 	max-height: 0px;
 	position: absolute;
-	overflow: hidden;
+	display: none;
 }
 
-div[class^="select-submenu-"] .content-option ul {
+div[class^="select-submenu-"] .has_search {
+	padding-top: 35px;
+}
+
+div[class^="select-submenu-"] .content-option .search-group {
+	position: absolute;
+	top: 0px;
+}
+
+div[class^="select-submenu-"] .content-option .list-option {
+	max-height: 450px;
+	overflow-y: auto;
+}
+
+/* width */
+div[class^="select-submenu-"] .content-option .list-option::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+div[class^="select-submenu-"] .content-option .list-option::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+div[class^="select-submenu-"] .content-option .list-option::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+div[class^="select-submenu-"] .content-option .list-option::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+div[class^="select-submenu-"] .content-option .list-option {
 	list-style: none;
 	background-color: white;
 	padding: 0px;
-	border: 1px solid #bdbcbc;
 	margin-top: 0px;
+	display: block;
 }
 
-div[class^="select-submenu-"] .content-option ul li {
-	min-width: 100px;
+div[class^="select-submenu-"] .content-option .list-option li {
+	white-space:nowrap;
 }
 
-div[class^="select-submenu-"] .content-option ul .parent-label{
+div[class^="select-submenu-"] .content-option .list-option .parent-label{
 	text-align: center;
 	padding: 5px 5px 5px 35px;
 	font-weight: bold;
@@ -59,34 +100,52 @@ div[class^="select-submenu-"] .content-option ul .parent-label{
 	background-color: #cce7ff;
 }
 
-div[class^="select-submenu-"] .content-option ul .parent-label .back {
+div[class^="select-submenu-"] .content-option .list-option .parent-label .back {
 	position: absolute;
 	top: 3px;
 	left: 3px;
 }
 
-div[class^="select-submenu-"] .content-option ul .row-select {
-	padding: 5px 5px 5px 10px;
+div[class^="select-submenu-"] .content-option .list-option .row-select {
+	padding: 5px 15px 5px 10px;
 	font-size: 14px;
 	cursor: pointer;
 	display: flex;
 	position: relative;
 }
 
-div[class^="select-submenu-"] .content-option ul .row-select .submenu-icon {
+div[class^="select-submenu-"] .content-option .list-option .row-select .submenu-icon {
 	position: absolute;
 	right: 3px;
 	top: 7px;
 }
 
-div[class^="select-submenu-"] .content-option ul .active {
+div[class^="select-submenu-"] .content-option .list-option .active {
 	background-color: #b3b3b3;
 }
 
-div[class^="select-submenu-"] .content-option ul .row-select:hover {
+div[class^="select-submenu-"] .content-option .list-option .row-select:hover {
 	background-color: #b3b3b3;
 }
 
 /*div[class^="select-submenu-"] .content-option ul .row-select:nth-child(even) {
 	background-color: #CCC;
 }*/
+
+div[class^="select-submenu-"] .content-option .search-container ul {
+	list-style: none;
+	padding: 0px;
+}
+
+div[class^="select-submenu-"] .content-option .search-container .list-search ul {
+	padding-left: 10px;
+}
+
+div[class^="select-submenu-"] .content-option .search-container .list-search .list-search-parent-label {
+	background-color: #cce7ff;
+}
+
+div[class^="select-submenu-"] .content-option .search-container .list-search-container {
+	max-height: 450px;
+	overflow-y: auto;
+}
